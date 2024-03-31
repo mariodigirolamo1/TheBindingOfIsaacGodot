@@ -71,3 +71,9 @@ shape = SubResource("CapsuleShape2D_mmms1")
 sprite_frames = SubResource("SpriteFrames_uhyi1")
 animation = &"Idle"
 autoplay = "Idle"
+
+[node name="Area2D" type="Area2D" parent="." groups=["players"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.45, 5)
+shape = SubResource("CapsuleShape2D_mmms1")
