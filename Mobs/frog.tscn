@@ -61,7 +61,7 @@ shape = SubResource("CircleShape2D_wo8bi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oum1b")
-animation = &"Idle"
+animation = &"Jump"
 autoplay = "Idle"
 
 [node name="BulletDetection" type="Area2D" parent="."]
