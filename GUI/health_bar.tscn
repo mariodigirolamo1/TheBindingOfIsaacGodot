@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bek1hhhowv7if"]
+
+[ext_resource type="Script" path="res://GUI/health_bar.gd" id="1_4h07s"]
+[ext_resource type="Texture2D" uid="uid://bwy6avovhtyq1" path="res://Assets/Sunny Land Collection Files/Sunny Land Collection Files/Packs/Sunnyland/sprites/cherry/cherry-1.png" id="1_mmtyf"]
+
+[node name="HealthBar" type="Panel"]
+offset_right = 75.0
+offset_bottom = 25.0
+script = ExtResource("1_4h07s")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 75.0
+offset_bottom = 25.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_mmtyf")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_mmtyf")
+stretch_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_mmtyf")
+stretch_mode = 2
