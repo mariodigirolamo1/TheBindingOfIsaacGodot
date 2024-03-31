@@ -12,7 +12,6 @@ func _physics_process(delta):
 	updateYVelocity()
 	handleIdle()
 	handleShooting(delta)
-			
 	move_and_slide()
 	
 func updateXVelocity():

@@ -7,7 +7,6 @@ func _ready():
 	if(direction == "up" || direction == "down"):
 		rotation = deg_to_rad(90)
 
-# Called when the node enters the scene tree for the first time.
 func _process(delta):
 	handleEdges()
 	updateBulletPosition(delta)
@@ -30,7 +29,5 @@ func updateBulletPosition(delta):
 		"down":
 			position.y += 1 * speed * delta
 
-func _on_body_entered(body):
-	if body.is_in_group("mobs"):
-		body.queue_free()
+func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	queue_free()
