@@ -7,7 +7,6 @@ func _ready():
 	if(direction == "up" || direction == "down"):
 		rotation = deg_to_rad(90)
 
-# Called when the node enters the scene tree for the first time.
 func _process(delta):
 	handleEdges()
 	updateBulletPosition(delta)

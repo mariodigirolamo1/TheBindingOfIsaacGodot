@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 const SPEED = 30
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	handleChase()
 	move_and_slide()
@@ -23,7 +22,7 @@ func handleChase():
 	playJump(xDir == 1)
 	
 func playJump(flipped):
-	var spriteNode = get_node("AnimatedSprite2D")
+	var spriteNode = get_node("AnimatedSprite")
 	
 	spriteNode.flip_h = flipped 
 	spriteNode.play("Jump")

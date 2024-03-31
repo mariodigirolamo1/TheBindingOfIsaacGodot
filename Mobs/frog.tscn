@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://by8e50vllwu62" path="res://Assets/Sunny Land Collection Files/Sunny Land Collection Files/Packs/Sunnyland/sprites/frog/jump/frog-jump-1.png" id="5_2y38k"]
 [ext_resource type="Texture2D" uid="uid://y1vo2ihkekv3" path="res://Assets/Sunny Land Collection Files/Sunny Land Collection Files/Packs/Sunnyland/sprites/frog/jump/frog-jump-2.png" id="6_c7dng"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wo8bi"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o743p"]
+radius = 5.64375
+height = 25.3969
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oum1b"]
 animations = [{
@@ -55,21 +57,25 @@ collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_uecr3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 2)
-shape = SubResource("CircleShape2D_wo8bi")
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(-0.223953, 0.369324)
+rotation = -0.682424
+scale = Vector2(1.1, 1)
+shape = SubResource("CapsuleShape2D_o743p")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_oum1b")
 animation = &"Jump"
 autoplay = "Idle"
 
 [node name="BulletDetection" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletDetection"]
-position = Vector2(-1, 2)
-scale = Vector2(1.355, 1.165)
-shape = SubResource("CircleShape2D_wo8bi")
+[node name="Shape" type="CollisionShape2D" parent="BulletDetection"]
+position = Vector2(-0.223953, 0.369324)
+rotation = -0.682424
+scale = Vector2(1.1, 1)
+shape = SubResource("CapsuleShape2D_o743p")
 
 [connection signal="area_shape_entered" from="BulletDetection" to="." method="_on_bullet_detection_area_shape_entered"]
 [connection signal="body_entered" from="BulletDetection" to="." method="_on_bullet_detection_body_entered"]
