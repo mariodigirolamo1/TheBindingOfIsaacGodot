@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://buw2ad3k3q76"]
+
+[ext_resource type="Script" path="res://Menus/main.gd" id="1_g74x5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hjwmn"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57s0g"]
+bg_color = Color(0.643137, 0.647059, 0.65098, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.376471, 0.376471, 0.376471, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_g74x5")
+
+[node name="Background" type="Panel" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hjwmn")
+
+[node name="ButtonsPanel" type="Panel" parent="Background"]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 137.0
+offset_right = 859.0
+offset_bottom = 537.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_57s0g")
+
+[node name="Button" type="Button" parent="Background/ButtonsPanel"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 146.0
+offset_right = 402.0
+offset_bottom = 254.0
+theme_override_font_sizes/font_size = 46
+text = "New Run"
+
+[connection signal="pressed" from="Background/ButtonsPanel/Button" to="." method="_on_button_pressed"]
