@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dmpvuvxmatxpl"]
+[gd_scene load_steps=17 format=3 uid="uid://dmpvuvxmatxpl"]
 
 [ext_resource type="Texture2D" uid="uid://bkbl8m1e0b0mj" path="res://Assets/Sunny Land Collection Files/Sunny Land Collection Files/Packs/Fort of Illusion/Fort of Illusion Files/Layers/tileset.png" id="1_gnhee"]
 [ext_resource type="Script" path="res://Rooms/Intro/intro_room.gd" id="1_heknh"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b7t6d2e824i52" path="res://Mobs/frog.tscn" id="6_7guet"]
 [ext_resource type="PackedScene" uid="uid://y3il1lvjwd11" path="res://Doors/basic_door.tscn" id="7_5lest"]
 [ext_resource type="PackedScene" uid="uid://bek1hhhowv7if" path="res://GUI/health_bar.tscn" id="7_8odhn"]
+[ext_resource type="Script" path="res://Rooms/Intro/Matrix.gd" id="10_l8go8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b7v5d"]
 texture = ExtResource("1_gnhee")
@@ -1711,6 +1712,8 @@ sources/1 = SubResource("TileSetAtlasSource_k5by0")
 sources/2 = SubResource("TileSetAtlasSource_mlwtg")
 sources/4 = SubResource("TileSetAtlasSource_jxoyj")
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_1wqxk"]
+
 [node name="IntroRoom" type="Node2D"]
 script = ExtResource("1_heknh")
 
@@ -1766,5 +1769,133 @@ offset_left = 7.0
 offset_top = 5.0
 offset_right = 78.0
 offset_bottom = 26.0
+
+[node name="Map" type="Panel" parent="GUI"]
+offset_left = 241.0
+offset_top = 5.0
+offset_right = 279.0
+offset_bottom = 39.0
+
+[node name="Matrix" type="GridContainer" parent="GUI/Map"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 31.0
+offset_bottom = 25.0
+scale = Vector2(1.185, 1.185)
+script = ExtResource("10_l8go8")
+
+[node name="Row1" type="VBoxContainer" parent="GUI/Map/Matrix"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Cols" type="HBoxContainer" parent="GUI/Map/Matrix/Row1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="GUI/Map/Matrix/Row1/Cols"]
+modulate = Color(0.423529, 0.423529, 0.423529, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("CanvasTexture_1wqxk")
+
+[node name="TextureRect2" type="TextureRect" parent="GUI/Map/Matrix/Row1/Cols"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("CanvasTexture_1wqxk")
+
+[node name="TextureRect3" type="TextureRect" parent="GUI/Map/Matrix/Row1/Cols"]
+modulate = Color(0.423529, 0.423529, 0.423529, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("CanvasTexture_1wqxk")
+
+[node name="TextureRect4" type="TextureRect" parent="GUI/Map/Matrix/Row1/Cols"]
+modulate = Color(0.423529, 0.423529, 0.423529, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("CanvasTexture_1wqxk")
+
+[node name="TextureRect5" type="TextureRect" parent="GUI/Map/Matrix/Row1/Cols"]
+modulate = Color(0.423529, 0.423529, 0.423529, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("CanvasTexture_1wqxk")
+
+[node name="Row2" type="VBoxContainer" parent="GUI/Map/Matrix"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Cols" type="HBoxContainer" parent="GUI/Map/Matrix/Row2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="GUI/Map/Matrix/Row2/Cols"]
+modulate = Color(0.423529, 0.423529, 0.423529, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("CanvasTexture_1wqxk")
+
+[node name="TextureRect2" type="TextureRect" parent="GUI/Map/Matrix/Row2/Cols"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("CanvasTexture_1wqxk")
+
+[node name="TextureRect3" type="TextureRect" parent="GUI/Map/Matrix/Row2/Cols"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("CanvasTexture_1wqxk")
+
+[node name="TextureRect4" type="TextureRect" parent="GUI/Map/Matrix/Row2/Cols"]
+modulate = Color(0.423529, 0.423529, 0.423529, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("CanvasTexture_1wqxk")
+
+[node name="TextureRect5" type="TextureRect" parent="GUI/Map/Matrix/Row2/Cols"]
+modulate = Color(0.423529, 0.423529, 0.423529, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("CanvasTexture_1wqxk")
+
+[node name="Row3" type="VBoxContainer" parent="GUI/Map/Matrix"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Cols" type="HBoxContainer" parent="GUI/Map/Matrix/Row3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="GUI/Map/Matrix/Row3/Cols"]
+modulate = Color(0.423529, 0.423529, 0.423529, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("CanvasTexture_1wqxk")
+
+[node name="TextureRect2" type="TextureRect" parent="GUI/Map/Matrix/Row3/Cols"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("CanvasTexture_1wqxk")
+
+[node name="TextureRect3" type="TextureRect" parent="GUI/Map/Matrix/Row3/Cols"]
+modulate = Color(0.423529, 0.423529, 0.423529, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("CanvasTexture_1wqxk")
+
+[node name="TextureRect4" type="TextureRect" parent="GUI/Map/Matrix/Row3/Cols"]
+modulate = Color(0.423529, 0.423529, 0.423529, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("CanvasTexture_1wqxk")
+
+[node name="TextureRect5" type="TextureRect" parent="GUI/Map/Matrix/Row3/Cols"]
+modulate = Color(0.423529, 0.423529, 0.423529, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("CanvasTexture_1wqxk")
 
 [connection signal="child_order_changed" from="Doors" to="." method="_on_doors_child_order_changed"]

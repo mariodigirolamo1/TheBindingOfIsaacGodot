@@ -1,6 +1,7 @@
 extends Area2D
 
 var open = false
+var side
 
 func _process(delta):
 	if open:
@@ -11,4 +12,4 @@ func _process(delta):
 func _on_body_entered(body):
 	if open:
 		if body.is_in_group("players"):
-			MapHandler.changeRoom()
+			MapHandler.changeRoom(side)
