@@ -13,5 +13,6 @@ The visuals and audio will come later.
 
 ### Current State Video
 
-https://github.com/mariodigirolamo1/TheBindingOfIsaacGodot/assets/69394590/4666aa72-f52e-458f-9a6b-c35ee92fe389
+https://github.com/mariodigirolamo1/TheBindingOfIsaacGodot/assets/69394590/bf0eaa57-f422-477c-8369-49cd8506ab50
+
 
