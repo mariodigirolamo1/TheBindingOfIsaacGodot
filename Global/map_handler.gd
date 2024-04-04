@@ -3,6 +3,9 @@ extends Node
 const mapRows = 3
 const mapColumns = 5
 
+# x left to right
+# y top to bottom
+
 var map = [
 	[-1,1,-1,-1,-1],
 	[-1,1,1,-1,-1],
@@ -10,6 +13,18 @@ var map = [
 ]
 
 var currentRoomCoords = [2,1]
+
+func getCellValue(dx,dy):
+	var x = currentRoomCoords[0]+dx
+	var y = currentRoomCoords[1]+dy
+	
+	var validX = x >= 0 && x < mapRows
+	var validY = y >= 0 && y < mapColumns
+	
+	if validX && validY:
+		return map[x][y]
+	else:
+		return -1
 
 func changeRoom(side):
 	
