@@ -1,7 +1,13 @@
 extends Panel
 
+func _ready():
+	modulate()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	modulate()
+		
+func modulate():
 	var container = get_node("HBoxContainer")
 
 	var i = 0
