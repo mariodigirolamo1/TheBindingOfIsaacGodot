@@ -3,12 +3,16 @@ extends Node
 const mapRows = 3
 const mapColumns = 5
 
+var room4Frogs = preload("res://Rooms/4_frogs/room_4_frogs.tscn")
+var room2Frogs = preload("res://Rooms/2_frogs/room_2_frogs.tscn")
+var room1Cherry = preload("res://Rooms/1_cherry/room_1_cherry.tscn")
+
 # x left to right
 # y top to bottom
 
 var map = [
-	[-1,1,-1,-1,-1],
-	[-1,1,1,-1,-1],
+	[-1,3,-1,-1,-1],
+	[-1,1,2,-1,-1],
 	[-1,1,-1,-1,-1]
 ]
 
@@ -48,9 +52,29 @@ func changeRoom(side):
 		var candidateMapPos = map[candidateCoords[0]][candidateCoords[1]]
 		print("candidateMapPos: " + str(candidateMapPos))
 		
-		if candidateMapPos != -1:
+		# this scales very poorly
+		
+		if candidateMapPos == 1:
 			currentRoomCoords = candidateCoords
-			get_tree().change_scene_to_file("res://Rooms/Intro/intro_room.tscn")
+			var room = room4Frogs.instantiate()
+			var roomNode = get_tree().get_nodes_in_group("rooms")[0]
+			for child in roomNode.get_children():
+				child.queue_free()
+			roomNode.add_child(room)
+		elif candidateMapPos == 2:
+			currentRoomCoords = candidateCoords
+			var room = room2Frogs.instantiate()
+			var roomNode = get_tree().get_nodes_in_group("rooms")[0]
+			for child in roomNode.get_children():
+				child.queue_free()
+			roomNode.add_child(room)
+		elif candidateMapPos == 3:
+			currentRoomCoords = candidateCoords
+			var room = room1Cherry.instantiate()
+			var roomNode = get_tree().get_nodes_in_group("rooms")[0]
+			for child in roomNode.get_children():
+				child.queue_free()
+			roomNode.add_child(room)
 		else:
 			print("Can't change room")
 

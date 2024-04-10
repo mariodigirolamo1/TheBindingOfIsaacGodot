@@ -21,7 +21,10 @@ func resetPlayerStats():
 	maxPlayerHP = 3
 	damageDelta = 1
 
-func updatePlayerHP():
+func updatePlayerHP(valueToAdd):
 	if damageDelta >= 1:
-		damageDelta = 0
-		playerHP -= 1
+		if valueToAdd > 0 && playerHP == 3:
+			pass
+		else:
+			damageDelta = 0
+			playerHP += valueToAdd

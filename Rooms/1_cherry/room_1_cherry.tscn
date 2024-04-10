@@ -1,17 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://dmpvuvxmatxpl"]
+[gd_scene load_steps=13 format=3 uid="uid://d4i335tgbgt1e"]
 
-[ext_resource type="Texture2D" uid="uid://bkbl8m1e0b0mj" path="res://Assets/Sunny Land Collection Files/Sunny Land Collection Files/Packs/Fort of Illusion/Fort of Illusion Files/Layers/tileset.png" id="1_gnhee"]
-[ext_resource type="Script" path="res://Rooms/Intro/intro_room.gd" id="1_heknh"]
-[ext_resource type="Texture2D" uid="uid://bas4b6e5ok3jm" path="res://Assets/Sunny Land Collection Files/Sunny Land Collection Files/Packs/Woods Pack/ENVIRONMENT/tileset.png" id="2_jj3kw"]
-[ext_resource type="Texture2D" uid="uid://dq04wqs22x3e3" path="res://Assets/Sunny Land Collection Files/Sunny Land Collection Files/Packs/Forest of Illusion/Forest of Illusion Expansion Pack/Layers/tiles.png" id="3_mrnij"]
-[ext_resource type="PackedScene" uid="uid://bm16feyl36yq8" path="res://Player/player.tscn" id="4_7haia"]
-[ext_resource type="Texture2D" uid="uid://dmy37oo4ke1b8" path="res://Assets/Sunny Land Collection Files/Sunny Land Collection Files/Packs/Sunnyland/environment/tileset.png" id="4_vxvk6"]
-[ext_resource type="PackedScene" uid="uid://b7t6d2e824i52" path="res://Mobs/frog.tscn" id="6_7guet"]
-[ext_resource type="PackedScene" uid="uid://bek1hhhowv7if" path="res://GUI/health_bar.tscn" id="7_8odhn"]
-[ext_resource type="Script" path="res://Rooms/Intro/Matrix.gd" id="10_l8go8"]
+[ext_resource type="Script" path="res://Rooms/1_cherry/room_1_cherry.gd" id="1_xd58k"]
+[ext_resource type="Texture2D" uid="uid://bkbl8m1e0b0mj" path="res://Assets/Sunny Land Collection Files/Sunny Land Collection Files/Packs/Fort of Illusion/Fort of Illusion Files/Layers/tileset.png" id="2_5pxva"]
+[ext_resource type="Texture2D" uid="uid://bas4b6e5ok3jm" path="res://Assets/Sunny Land Collection Files/Sunny Land Collection Files/Packs/Woods Pack/ENVIRONMENT/tileset.png" id="3_es22y"]
+[ext_resource type="Texture2D" uid="uid://dq04wqs22x3e3" path="res://Assets/Sunny Land Collection Files/Sunny Land Collection Files/Packs/Forest of Illusion/Forest of Illusion Expansion Pack/Layers/tiles.png" id="4_mmjle"]
+[ext_resource type="Texture2D" uid="uid://dmy37oo4ke1b8" path="res://Assets/Sunny Land Collection Files/Sunny Land Collection Files/Packs/Sunnyland/environment/tileset.png" id="5_f4y5l"]
+[ext_resource type="PackedScene" uid="uid://bm16feyl36yq8" path="res://Player/player.tscn" id="6_iqce0"]
+[ext_resource type="PackedScene" uid="uid://jg56ng5usrkw" path="res://Items/Cherry/cherry.tscn" id="7_1j2yy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b7v5d"]
-texture = ExtResource("1_gnhee")
+texture = ExtResource("2_5pxva")
 6:0/0 = 0
 6:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:0/0/physics_layer_0/angular_velocity = 0.0
@@ -188,7 +186,7 @@ texture = ExtResource("1_gnhee")
 11:6/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k5by0"]
-texture = ExtResource("2_jj3kw")
+texture = ExtResource("3_es22y")
 27:1/0 = 0
 27:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 27:1/0/physics_layer_0/angular_velocity = 0.0
@@ -863,7 +861,7 @@ texture = ExtResource("2_jj3kw")
 28:20/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mlwtg"]
-texture = ExtResource("3_mrnij")
+texture = ExtResource("4_mmjle")
 0:11/0 = 0
 0:11/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:11/0/physics_layer_0/angular_velocity = 0.0
@@ -1316,7 +1314,7 @@ texture = ExtResource("3_mrnij")
 35:16/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jxoyj"]
-texture = ExtResource("4_vxvk6")
+texture = ExtResource("5_f4y5l")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
@@ -1703,7 +1701,7 @@ texture = ExtResource("4_vxvk6")
 15:21/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 15:21/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSet" id="TileSet_3ffst"]
+[sub_resource type="TileSet" id="TileSet_kdmpg"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 7
 sources/0 = SubResource("TileSetAtlasSource_b7v5d")
@@ -1711,176 +1709,22 @@ sources/1 = SubResource("TileSetAtlasSource_k5by0")
 sources/2 = SubResource("TileSetAtlasSource_mlwtg")
 sources/4 = SubResource("TileSetAtlasSource_jxoyj")
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_1wqxk"]
-
-[node name="IntroRoom" type="Node2D"]
-script = ExtResource("1_heknh")
+[node name="Room1Cherry" type="Node2D"]
+script = ExtResource("1_xd58k")
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_3ffst")
+tile_set = SubResource("TileSet_kdmpg")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 393216, 1, 65536, 0, 1610612737, 131072, 0, 1610612737, 196608, 0, 1610612737, 1, 0, 1, 65537, 196612, 3, 131073, 196612, 3, 196609, 196612, 3, 2, 0, 1, 65538, 196612, 3, 131074, 196612, 3, 196610, 196612, 3, 3, 0, 1, 65539, 196612, 3, 131075, 196612, 3, 196611, 196612, 3, 4, 0, 1, 65540, 196612, 3, 131076, 196612, 3, 196612, 196612, 3, 5, 0, 1, 65541, 196612, 3, 131077, 196612, 3, 196613, 196612, 3, 6, 0, 1, 65542, 196612, 3, 131078, 196612, 3, 196614, 196612, 3, 7, 0, 1, 65543, 196612, 3, 131079, 196612, 3, 196615, 196612, 3, 8, 0, 1, 65544, 196612, 3, 131080, 196612, 3, 196616, 196612, 3, 9, 0, 1, 65545, 196612, 3, 131081, 196612, 3, 196617, 196612, 3, 262144, 0, 1610612737, 327680, 0, 1610612737, 393216, 0, 1610612737, 458752, 0, 1610612737, 262145, 196612, 3, 327681, 196612, 3, 393217, 196612, 3, 458753, 196612, 3, 262146, 196612, 3, 327682, 196612, 3, 393218, 196612, 3, 458754, 196612, 3, 262147, 196612, 3, 327683, 196612, 3, 393219, 196612, 3, 458755, 196612, 3, 262148, 196612, 3, 327684, 196612, 3, 393220, 196612, 3, 458756, 196612, 3, 262149, 196612, 3, 327685, 196612, 3, 393221, 196612, 3, 458757, 196612, 3, 262150, 196612, 3, 327686, 196612, 3, 393222, 196612, 3, 458758, 196612, 3, 262151, 196612, 3, 327687, 196612, 3, 393223, 196612, 3, 458759, 196612, 3, 262152, 196612, 3, 327688, 196612, 3, 393224, 196612, 3, 458760, 196612, 3, 262153, 196612, 3, 327689, 196612, 3, 393225, 196612, 3, 458761, 196612, 3, 524288, 0, 1610612737, 589824, 0, 1610612737, 655360, 0, 1610612737, 720896, 393216, 1, 524289, 196612, 3, 589825, 196612, 3, 655361, 196612, 3, 720897, 0, 805306369, 524290, 196612, 3, 589826, 196612, 3, 655362, 196612, 3, 720898, 0, 805306369, 524291, 196612, 3, 589827, 196612, 3, 655363, 196612, 3, 720899, 0, 805306369, 524292, 196612, 3, 589828, 196612, 3, 655364, 196612, 3, 720900, 0, 805306369, 524293, 196612, 3, 589829, 196612, 3, 655365, 196612, 3, 720901, 0, 805306369, 524294, 196612, 3, 589830, 196612, 3, 655366, 196612, 3, 720902, 0, 805306369, 524295, 196612, 3, 589831, 196612, 3, 655367, 196612, 3, 720903, 0, 805306369, 524296, 196612, 3, 589832, 196612, 3, 655368, 196612, 3, 720904, 0, 805306369, 524297, 196612, 3, 589833, 196612, 3, 655369, 196612, 3, 720905, 0, 805306369, 10, 0, 1, 65546, 196612, 3, 131082, 196612, 3, 196618, 196612, 3, 11, 0, 1, 65547, 196612, 3, 131083, 196612, 3, 196619, 196612, 3, 262154, 196612, 3, 327690, 196612, 3, 393226, 196612, 3, 458762, 196612, 3, 262155, 196612, 3, 327691, 196612, 3, 393227, 196612, 3, 458763, 196612, 3, 524298, 196612, 3, 589834, 196612, 3, 655370, 196612, 3, 720906, 0, 805306369, 524299, 196612, 3, 589835, 196612, 3, 655371, 196612, 3, 720907, 0, 805306369, 12, 0, 1, 65548, 196612, 3, 131084, 196612, 3, 196620, 196612, 3, 13, 0, 1, 65549, 196612, 3, 131085, 196612, 3, 196621, 196612, 3, 14, 0, 1, 65550, 196612, 3, 131086, 196612, 3, 196622, 196612, 3, 15, 0, 1, 65551, 196612, 3, 131087, 196612, 3, 196623, 196612, 3, 16, 0, 1, 65552, 196612, 3, 131088, 196612, 3, 196624, 196612, 3, 17, 393216, 805306369, 65553, 0, 1342177281, 131089, 0, 1342177281, 196625, 0, 1342177281, 262156, 196612, 3, 327692, 196612, 3, 393228, 196612, 3, 458764, 196612, 3, 262157, 196612, 3, 327693, 196612, 3, 393229, 196612, 3, 458765, 196612, 3, 262158, 196612, 3, 327694, 196612, 3, 393230, 196612, 3, 458766, 196612, 3, 262159, 196612, 3, 327695, 196612, 3, 393231, 196612, 3, 458767, 196612, 3, 262160, 196612, 3, 327696, 196612, 3, 393232, 196612, 3, 458768, 196612, 3, 262161, 0, 1342177281, 327697, 0, 1342177281, 393233, 0, 1342177281, 458769, 0, 1342177281, 524304, 196612, 3, 589840, 196612, 3, 655376, 196612, 3, 720912, 0, 805306369, 524305, 0, 1342177281, 589841, 0, 1342177281, 655377, 0, 1342177281, 720913, 393216, 805306369, 524302, 196612, 3, 589838, 196612, 3, 655374, 196612, 3, 720910, 0, 805306369, 524303, 196612, 3, 589839, 196612, 3, 655375, 196612, 3, 720911, 0, 805306369, 524300, 196612, 3, 589836, 196612, 3, 655372, 196612, 3, 720908, 0, 805306369, 524301, 196612, 3, 589837, 196612, 3, 655373, 196612, 3, 720909, 0, 805306369)
 
-[node name="Player" parent="." instance=ExtResource("4_7haia")]
+[node name="Player" parent="." instance=ExtResource("6_iqce0")]
 position = Vector2(143, 94)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(143, 96.075)
-zoom = Vector2(4, 3.3)
-
-[node name="Bullets" type="Node2D" parent="."]
-
-[node name="Mobs" type="Node2D" parent="."]
-
-[node name="Frog" parent="Mobs" instance=ExtResource("6_7guet")]
-position = Vector2(49.74, 45.04)
-
-[node name="Frog2" parent="Mobs" instance=ExtResource("6_7guet")]
-position = Vector2(239.288, 45.04)
-
-[node name="Frog3" parent="Mobs" instance=ExtResource("6_7guet")]
-position = Vector2(239.288, 147.785)
-
-[node name="Frog4" parent="Mobs" instance=ExtResource("6_7guet")]
-position = Vector2(51.293, 147.785)
 
 [node name="Doors" type="Node2D" parent="."]
 
-[node name="GUI" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
+[node name="Bullets" type="Node2D" parent="."]
 
-[node name="HealthBar" parent="GUI" instance=ExtResource("7_8odhn")]
-offset_left = 7.0
-offset_top = 5.0
-offset_right = 78.0
-offset_bottom = 26.0
+[node name="Items" type="Node2D" parent="."]
 
-[node name="Map" type="Panel" parent="GUI"]
-offset_left = 241.0
-offset_top = 5.0
-offset_right = 279.0
-offset_bottom = 39.0
-
-[node name="Matrix" type="GridContainer" parent="GUI/Map"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 5.0
-offset_right = 31.0
-offset_bottom = 25.0
-scale = Vector2(1.185, 1.185)
-script = ExtResource("10_l8go8")
-
-[node name="Row1" type="VBoxContainer" parent="GUI/Map/Matrix"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Cols" type="HBoxContainer" parent="GUI/Map/Matrix/Row1"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="TextureRect" type="TextureRect" parent="GUI/Map/Matrix/Row1/Cols"]
-modulate = Color(0.423529, 0.423529, 0.423529, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("CanvasTexture_1wqxk")
-
-[node name="TextureRect2" type="TextureRect" parent="GUI/Map/Matrix/Row1/Cols"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("CanvasTexture_1wqxk")
-
-[node name="TextureRect3" type="TextureRect" parent="GUI/Map/Matrix/Row1/Cols"]
-modulate = Color(0.423529, 0.423529, 0.423529, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("CanvasTexture_1wqxk")
-
-[node name="TextureRect4" type="TextureRect" parent="GUI/Map/Matrix/Row1/Cols"]
-modulate = Color(0.423529, 0.423529, 0.423529, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("CanvasTexture_1wqxk")
-
-[node name="TextureRect5" type="TextureRect" parent="GUI/Map/Matrix/Row1/Cols"]
-modulate = Color(0.423529, 0.423529, 0.423529, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("CanvasTexture_1wqxk")
-
-[node name="Row2" type="VBoxContainer" parent="GUI/Map/Matrix"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Cols" type="HBoxContainer" parent="GUI/Map/Matrix/Row2"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="TextureRect" type="TextureRect" parent="GUI/Map/Matrix/Row2/Cols"]
-modulate = Color(0.423529, 0.423529, 0.423529, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("CanvasTexture_1wqxk")
-
-[node name="TextureRect2" type="TextureRect" parent="GUI/Map/Matrix/Row2/Cols"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("CanvasTexture_1wqxk")
-
-[node name="TextureRect3" type="TextureRect" parent="GUI/Map/Matrix/Row2/Cols"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("CanvasTexture_1wqxk")
-
-[node name="TextureRect4" type="TextureRect" parent="GUI/Map/Matrix/Row2/Cols"]
-modulate = Color(0.423529, 0.423529, 0.423529, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("CanvasTexture_1wqxk")
-
-[node name="TextureRect5" type="TextureRect" parent="GUI/Map/Matrix/Row2/Cols"]
-modulate = Color(0.423529, 0.423529, 0.423529, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("CanvasTexture_1wqxk")
-
-[node name="Row3" type="VBoxContainer" parent="GUI/Map/Matrix"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Cols" type="HBoxContainer" parent="GUI/Map/Matrix/Row3"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="TextureRect" type="TextureRect" parent="GUI/Map/Matrix/Row3/Cols"]
-modulate = Color(0.423529, 0.423529, 0.423529, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("CanvasTexture_1wqxk")
-
-[node name="TextureRect2" type="TextureRect" parent="GUI/Map/Matrix/Row3/Cols"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("CanvasTexture_1wqxk")
-
-[node name="TextureRect3" type="TextureRect" parent="GUI/Map/Matrix/Row3/Cols"]
-modulate = Color(0.423529, 0.423529, 0.423529, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("CanvasTexture_1wqxk")
-
-[node name="TextureRect4" type="TextureRect" parent="GUI/Map/Matrix/Row3/Cols"]
-modulate = Color(0.423529, 0.423529, 0.423529, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("CanvasTexture_1wqxk")
-
-[node name="TextureRect5" type="TextureRect" parent="GUI/Map/Matrix/Row3/Cols"]
-modulate = Color(0.423529, 0.423529, 0.423529, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("CanvasTexture_1wqxk")
-
-[connection signal="child_order_changed" from="Doors" to="." method="_on_doors_child_order_changed"]
+[node name="Cherry" parent="Items" instance=ExtResource("7_1j2yy")]
+position = Vector2(70, 55)

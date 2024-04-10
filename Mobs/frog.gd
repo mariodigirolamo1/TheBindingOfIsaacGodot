@@ -6,7 +6,7 @@ var playerInArea = false
 
 func _process(delta):
 	if playerInArea:
-		PlayerStats.updatePlayerHP()
+		PlayerStats.updatePlayerHP(-1)
 		
 	handleChase()
 	move_and_slide()
