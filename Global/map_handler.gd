@@ -5,12 +5,13 @@ const mapColumns = 5
 
 var room4Frogs = preload("res://Rooms/4_frogs/room_4_frogs.tscn")
 var room2Frogs = preload("res://Rooms/2_frogs/room_2_frogs.tscn")
+var room1Cherry = preload("res://Rooms/1_cherry/room_1_cherry.tscn")
 
 # x left to right
 # y top to bottom
 
 var map = [
-	[-1,2,-1,-1,-1],
+	[-1,3,-1,-1,-1],
 	[-1,1,2,-1,-1],
 	[-1,1,-1,-1,-1]
 ]
@@ -63,6 +64,13 @@ func changeRoom(side):
 		elif candidateMapPos == 2:
 			currentRoomCoords = candidateCoords
 			var room = room2Frogs.instantiate()
+			var roomNode = get_tree().get_nodes_in_group("rooms")[0]
+			for child in roomNode.get_children():
+				child.queue_free()
+			roomNode.add_child(room)
+		elif candidateMapPos == 3:
+			currentRoomCoords = candidateCoords
+			var room = room1Cherry.instantiate()
 			var roomNode = get_tree().get_nodes_in_group("rooms")[0]
 			for child in roomNode.get_children():
 				child.queue_free()

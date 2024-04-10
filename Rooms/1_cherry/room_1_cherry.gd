@@ -1,7 +1,6 @@
 extends Node2D
 
 var doorClass = preload("res://Doors/basic_door.tscn")
-var mobsNumber = 0
 
 func _ready():
 	var upDoor = doorClass.instantiate()
@@ -42,6 +41,5 @@ func _ready():
 				child.rotation = deg_to_rad(90)
 
 func _process(delta):
-	if mobsNumber == 0:
-		for child in get_node("Doors").get_children():
-			child.open = true
+	for child in get_node("Doors").get_children():
+		child.open = true
