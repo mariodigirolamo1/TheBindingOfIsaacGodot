@@ -1,9 +1,15 @@
 extends Node2D
 
 var doorClass = preload("res://Doors/basic_door.tscn")
-var mobsNumber = 0
+var Frog = preload("res://Mobs/frog.tscn")
+var state
+
+func init(state):
+	self.state = state
 
 func _ready():
+	handleMobSpawn()
+	
 	var upDoor = doorClass.instantiate()
 	var downDoor = doorClass.instantiate()
 	var leftDoor = doorClass.instantiate()
@@ -41,7 +47,20 @@ func _ready():
 				child.position = Vector2(278,96)
 				child.rotation = deg_to_rad(90)
 
+func handleMobSpawn():
+	if state.monstersCount > 0:
+		var frog1 = Frog.instantiate()
+		var frog2 = Frog.instantiate()
+		
+		frog1.position = Vector2(50,75)
+		frog2.position = Vector2(50,125)
+		
+		get_node("Mobs").add_child(frog1)
+		get_node("Mobs").add_child(frog2)
+
 func _process(delta):
-	if mobsNumber == 0:
+	state.monstersCount = get_node("Mobs").get_child_count()
+	
+	if state.monstersCount == 0:
 		for child in get_node("Doors").get_children():
 			child.open = true

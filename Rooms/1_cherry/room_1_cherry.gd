@@ -1,6 +1,10 @@
 extends Node2D
 
 var doorClass = preload("res://Doors/basic_door.tscn")
+var state
+
+func init(state):
+	self.state = state
 
 func _ready():
 	var upDoor = doorClass.instantiate()

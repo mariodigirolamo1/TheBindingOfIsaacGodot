@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://be6uc4shd7hss"]
+[gd_scene load_steps=12 format=3 uid="uid://be6uc4shd7hss"]
 
 [ext_resource type="Script" path="res://Rooms/2_frogs/room_2_frogs.gd" id="1_h460s"]
 [ext_resource type="Texture2D" uid="uid://bkbl8m1e0b0mj" path="res://Assets/Sunny Land Collection Files/Sunny Land Collection Files/Packs/Fort of Illusion/Fort of Illusion Files/Layers/tileset.png" id="2_cxee8"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dq04wqs22x3e3" path="res://Assets/Sunny Land Collection Files/Sunny Land Collection Files/Packs/Forest of Illusion/Forest of Illusion Expansion Pack/Layers/tiles.png" id="4_o2123"]
 [ext_resource type="Texture2D" uid="uid://dmy37oo4ke1b8" path="res://Assets/Sunny Land Collection Files/Sunny Land Collection Files/Packs/Sunnyland/environment/tileset.png" id="5_i8kcf"]
 [ext_resource type="PackedScene" uid="uid://bm16feyl36yq8" path="res://Player/player.tscn" id="6_py8ox"]
-[ext_resource type="PackedScene" uid="uid://b7t6d2e824i52" path="res://Mobs/frog.tscn" id="7_trxfu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b7v5d"]
 texture = ExtResource("2_cxee8")
@@ -1725,9 +1724,3 @@ position = Vector2(143, 94)
 [node name="Bullets" type="Node2D" parent="."]
 
 [node name="Mobs" type="Node2D" parent="."]
-
-[node name="Frog" parent="Mobs" instance=ExtResource("7_trxfu")]
-position = Vector2(49.74, 45.04)
-
-[node name="Frog2" parent="Mobs" instance=ExtResource("7_trxfu")]
-position = Vector2(239.288, 45.04)

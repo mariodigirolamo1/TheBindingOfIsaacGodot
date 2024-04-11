@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmpvuvxmatxpl"]
+[gd_scene load_steps=4 format=3 uid="uid://dmpvuvxmatxpl"]
 
 [ext_resource type="Script" path="res://Rooms/Intro/levels_container.gd" id="1_chlng"]
-[ext_resource type="PackedScene" uid="uid://dmbquxxmn8bh" path="res://Rooms/4_frogs/room_4_frogs.tscn" id="2_anr52"]
 [ext_resource type="PackedScene" uid="uid://bek1hhhowv7if" path="res://GUI/health_bar.tscn" id="8_qioly"]
 [ext_resource type="Script" path="res://Rooms/Intro/Matrix.gd" id="9_85b4p"]
 
@@ -9,8 +8,6 @@
 script = ExtResource("1_chlng")
 
 [node name="Room" type="Node2D" parent="." groups=["rooms"]]
-
-[node name="Room4Frogs" parent="Room" instance=ExtResource("2_anr52")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(143, 96.075)

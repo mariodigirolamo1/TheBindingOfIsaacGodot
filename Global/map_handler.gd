@@ -7,11 +7,14 @@ var room4Frogs = preload("res://Rooms/4_frogs/room_4_frogs.tscn")
 var room2Frogs = preload("res://Rooms/2_frogs/room_2_frogs.tscn")
 var room1Cherry = preload("res://Rooms/1_cherry/room_1_cherry.tscn")
 
+var RoomState = preload("res://Rooms/room_state.gd")
+
 var rng = RandomNumberGenerator.new()
 
 # x left to right
 # y top to bottom
 
+# this will not be used, just use dictionary
 var map = [
 	[-1,1,-1,-1,-1],
 	[-1,1,1,-1,-1],
@@ -20,16 +23,23 @@ var map = [
 	[-1,-1,1,1,-1]
 ]
 
+var roomStates = {}
 var currentRoomCoords = [2,1]
 
 func _ready():
 	generateRandomRooms()
+	
+func buildFirstRoom():
+	addRoomToTree(currentRoomCoords)
 
 func generateRandomRooms():
 	for i in mapRows:
 		for j in mapColumns:
 			if map[i][j] == 1:
-				map[i][j] = rng.randi_range(1,3)
+				var roomStateKey = str(i) + "," + str(j)
+				var roomState = RoomState.new()
+				roomState.init(rng.randi_range(1,3))
+				roomStates[roomStateKey] = roomState
 
 func getCellValue(dx,dy):
 	var x = currentRoomCoords[0]+dx
@@ -62,34 +72,33 @@ func changeRoom(side):
 	var isYInRange = candidateCoords[1] < mapColumns && candidateCoords[1] >= 0
 	
 	if isYInRange && isXInRange :
-		var candidateMapPos = map[candidateCoords[0]][candidateCoords[1]]
-		print("candidateMapPos: " + str(candidateMapPos))
+		#var candidateMapPos = map[candidateCoords[0]][candidateCoords[1]]
+		#print("candidateMapPos: " + str(candidateMapPos))
+		addRoomToTree(candidateCoords)
 		
-		# this scales very poorly
+
+func addRoomToTree(coords):
+	var row = coords[0]
+	var col = coords[1]
+	var key = str(row) + "," + str(col)
+	
+	currentRoomCoords = coords
+	
+	var roomsGroup = get_tree().get_nodes_in_group("rooms")
+	var roomNode = roomsGroup[0]
+	for child in roomNode.get_children():
+		child.queue_free()
 		
-		if candidateMapPos == 1:
-			currentRoomCoords = candidateCoords
-			var room = room4Frogs.instantiate()
-			var roomNode = get_tree().get_nodes_in_group("rooms")[0]
-			for child in roomNode.get_children():
-				child.queue_free()
-			roomNode.add_child(room)
-		elif candidateMapPos == 2:
-			currentRoomCoords = candidateCoords
-			var room = room2Frogs.instantiate()
-			var roomNode = get_tree().get_nodes_in_group("rooms")[0]
-			for child in roomNode.get_children():
-				child.queue_free()
-			roomNode.add_child(room)
-		elif candidateMapPos == 3:
-			currentRoomCoords = candidateCoords
-			var room = room1Cherry.instantiate()
-			var roomNode = get_tree().get_nodes_in_group("rooms")[0]
-			for child in roomNode.get_children():
-				child.queue_free()
-			roomNode.add_child(room)
-		else:
-			print("Can't change room")
+	var room
+	var roomState = roomStates.get(key)
+	
+	match roomState.roomType:
+		1: room = room4Frogs.instantiate()
+		2: room = room2Frogs.instantiate()
+		3: room = room1Cherry.instantiate()
+		
+	room.init(roomState)
+	roomNode.add_child(room)
 
 func subtract(a: Array, b: Array): 
 	var result = []
