@@ -1,22 +1,35 @@
 extends Node
 
-const mapRows = 3
+const mapRows = 5
 const mapColumns = 5
 
 var room4Frogs = preload("res://Rooms/4_frogs/room_4_frogs.tscn")
 var room2Frogs = preload("res://Rooms/2_frogs/room_2_frogs.tscn")
 var room1Cherry = preload("res://Rooms/1_cherry/room_1_cherry.tscn")
 
+var rng = RandomNumberGenerator.new()
+
 # x left to right
 # y top to bottom
 
 var map = [
-	[-1,3,-1,-1,-1],
-	[-1,1,2,-1,-1],
-	[-1,1,-1,-1,-1]
+	[-1,1,-1,-1,-1],
+	[-1,1,1,-1,-1],
+	[-1,1,1,-1,-1],
+	[-1,-1,1,-1,-1],
+	[-1,-1,1,1,-1]
 ]
 
 var currentRoomCoords = [2,1]
+
+func _ready():
+	generateRandomRooms()
+
+func generateRandomRooms():
+	for i in mapRows:
+		for j in mapColumns:
+			if map[i][j] == 1:
+				map[i][j] = rng.randi_range(1,3)
 
 func getCellValue(dx,dy):
 	var x = currentRoomCoords[0]+dx

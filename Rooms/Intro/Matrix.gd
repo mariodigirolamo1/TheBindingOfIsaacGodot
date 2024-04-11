@@ -1,5 +1,21 @@
 extends GridContainer
 
+var MapCell = preload("res://GUI/map_cell.tscn")
+
+func _ready():
+	var matrix = get_node(".")
+	for row in MapHandler.mapRows:
+		var rowContainer = VBoxContainer.new()
+		rowContainer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		rowContainer.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		matrix.add_child(rowContainer)
+		var columnsContainer = HBoxContainer.new()
+		columnsContainer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		columnsContainer.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		rowContainer.add_child(columnsContainer)
+		for col in MapHandler.mapColumns:
+			columnsContainer.add_child(MapCell.instantiate())
+			
 func _process(delta):
 	var matrix = get_node(".")
 	
