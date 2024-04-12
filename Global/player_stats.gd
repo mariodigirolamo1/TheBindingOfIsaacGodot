@@ -28,3 +28,16 @@ func updatePlayerHP(valueToAdd):
 		else:
 			damageDelta = 0
 			playerHP += valueToAdd
+
+func setPlayerPosition(playerNode, playerFromSide):
+	match playerFromSide:
+		"up":
+			playerNode.position = Vector2(130,140)
+		"down":
+			playerNode.position = Vector2(130,35)
+		"left":
+			playerNode.position = Vector2(240,100)
+		"right":
+			playerNode.position = Vector2(35,100)
+		"center":
+			playerNode.position = Vector2(130,110)

@@ -1,12 +1,25 @@
 extends Node2D
 
 var doorClass = preload("res://Doors/basic_door.tscn")
+var Cherry = preload("res://Items/Cherry/cherry.tscn")
+
+const MIDDLE_CHERRY_KEY = "middleCherry"
+
 var state
+var startPlayerPosition
 
-func init(state):
+func init(state, playerFromSide):
 	self.state = state
-
+	startPlayerPosition = playerFromSide
+	
 func _ready():
+	PlayerStats.setPlayerPosition(
+		get_node("Player"),
+		startPlayerPosition
+	)
+	
+	handleItemsSpawn()
+	
 	var upDoor = doorClass.instantiate()
 	var downDoor = doorClass.instantiate()
 	var leftDoor = doorClass.instantiate()
@@ -44,6 +57,17 @@ func _ready():
 				child.position = Vector2(278,96)
 				child.rotation = deg_to_rad(90)
 
+func handleItemsSpawn():
+	if state.items.has(MIDDLE_CHERRY_KEY):
+		var cherry = Cherry.instantiate()
+		cherry.position = Vector2(55,100)
+		cherry.set_name(MIDDLE_CHERRY_KEY)
+		get_node("Items").add_child(cherry)
+
 func _process(delta):
 	for child in get_node("Doors").get_children():
 		child.open = true
+
+func _on_items_child_exiting_tree(node):
+	if node.get_name() == MIDDLE_CHERRY_KEY:
+		state.items.erase(MIDDLE_CHERRY_KEY)

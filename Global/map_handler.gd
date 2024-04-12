@@ -16,21 +16,82 @@ var rng = RandomNumberGenerator.new()
 
 # this will not be used, just use dictionary
 var map = [
-	[-1,1,-1,-1,-1],
-	[-1,1,1,-1,-1],
-	[-1,1,1,-1,-1],
+	[-1,-1,-1,-1,-1],
 	[-1,-1,1,-1,-1],
-	[-1,-1,1,1,-1]
+	[-1,1,1,1,-1],
+	[-1,-1,1,-1,-1],
+	[-1,-1,-1,-1,-1]
 ]
+
+var subMap1 = [-1,-1,1,-1,-1]
+
+var subMap2 = [1,1,1,-1,-1]
+
+var subMap3 = [-1,-1,1,1,1]
 
 var roomStates = {}
 var currentRoomCoords = [2,1]
 
 func _ready():
+	shuffle()
+	
+func shuffle():
+	map = [
+		[-1,-1,-1,-1,-1],
+		[-1,-1,1,-1,-1],
+		[-1,1,1,1,-1],
+		[-1,-1,1,-1,-1],
+		[-1,-1,-1,-1,-1]
+	]
+	setRoomTemplate()
 	generateRandomRooms()
 	
+func setRoomTemplate():
+	currentRoomCoords = [2,2]
+	# set map top
+	var submap
+	submap = getRandomSubmap()
+	for i in mapColumns:
+		if submap[i] != -1:
+			map[0][i] = submap[i]
+	# set map bottom
+	submap = getRandomSubmap()
+	for i in mapColumns:
+		if submap[i] != -1:
+			map[4][i] = submap[i]
+	# set map right
+	submap = getRandomSubmap()
+	for i in mapRows:
+		if submap[i] != -1:
+			map[i][4] = submap[i]
+	# set map left
+	submap = getRandomSubmap()
+	for i in mapRows:
+		if submap[i] != -1:
+			map[i][0] = submap[i]
+			
+func getRandomSubmap() -> Array:
+	var submap
+	match rng.randi_range(1,3):
+			1: submap = subMap1
+			2: submap = subMap2
+			3: submap = subMap3
+	return submap
+			
+func rotate90DegressRigth(map):
+	var rotated = [[],[],[],[],[]]
+	for i in mapRows:
+		for j in mapColumns:
+			rotated[i].append(1)
+	
+	for j in mapColumns:
+		for i in range(mapRows - 1, 0, -1):
+			rotated[j][mapRows - 1 - i] = map[i][j]
+	
+	return rotated
+	
 func buildFirstRoom():
-	addRoomToTree(currentRoomCoords)
+	addRoomToTree(currentRoomCoords, "center")
 
 func generateRandomRooms():
 	for i in mapRows:
@@ -74,10 +135,10 @@ func changeRoom(side):
 	if isYInRange && isXInRange :
 		#var candidateMapPos = map[candidateCoords[0]][candidateCoords[1]]
 		#print("candidateMapPos: " + str(candidateMapPos))
-		addRoomToTree(candidateCoords)
+		addRoomToTree(candidateCoords, side)
 		
 
-func addRoomToTree(coords):
+func addRoomToTree(coords, fromSide):
 	var row = coords[0]
 	var col = coords[1]
 	var key = str(row) + "," + str(col)
@@ -97,7 +158,7 @@ func addRoomToTree(coords):
 		2: room = room2Frogs.instantiate()
 		3: room = room1Cherry.instantiate()
 		
-	room.init(roomState)
+	room.init(roomState, fromSide)
 	roomNode.add_child(room)
 
 func subtract(a: Array, b: Array): 

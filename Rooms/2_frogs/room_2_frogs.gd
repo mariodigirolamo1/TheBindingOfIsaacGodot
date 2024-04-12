@@ -3,11 +3,17 @@ extends Node2D
 var doorClass = preload("res://Doors/basic_door.tscn")
 var Frog = preload("res://Mobs/frog.tscn")
 var state
+var startPlayerPosition
 
-func init(state):
+func init(state, playerFromSide):
 	self.state = state
-
+	startPlayerPosition = playerFromSide
+	
 func _ready():
+	PlayerStats.setPlayerPosition(
+		get_node("Player"),
+		startPlayerPosition
+	)
 	handleMobSpawn()
 	
 	var upDoor = doorClass.instantiate()
@@ -52,8 +58,8 @@ func handleMobSpawn():
 		var frog1 = Frog.instantiate()
 		var frog2 = Frog.instantiate()
 		
-		frog1.position = Vector2(50,75)
-		frog2.position = Vector2(50,125)
+		frog1.position = Vector2(50,35)
+		frog2.position = Vector2(50,150)
 		
 		get_node("Mobs").add_child(frog1)
 		get_node("Mobs").add_child(frog2)

@@ -3,11 +3,17 @@ extends Node2D
 var doorClass = preload("res://Doors/basic_door.tscn")
 var Frog = preload("res://Mobs/frog.tscn")
 var state
+var startPlayerPosition
 
-func init(state):
+func init(state, playerFromSide):
 	self.state = state
+	startPlayerPosition = playerFromSide
 
 func _ready():
+	PlayerStats.setPlayerPosition(
+		get_node("Player"),
+		startPlayerPosition
+	)
 	handleMobSpawn()
 	
 	var upDoor = doorClass.instantiate()
