@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu1ph3e67m3h8"]
+
+[ext_resource type="Script" path="res://Bullets/HeightBullet/height_bullet.gd" id="1_838sk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa0vg"]
+size = Vector2(1, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7nt31"]
+
+[node name="Bullet" type="Area2D" groups=["bullets"]]
+collision_mask = 7
+script = ExtResource("1_838sk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(5, 4)
+shape = SubResource("RectangleShape2D_pa0vg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 4)
+texture = SubResource("CanvasTexture_7nt31")
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]

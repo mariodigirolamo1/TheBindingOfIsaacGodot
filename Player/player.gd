@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var bulletScene = preload("res://Bullets/bullet.tscn")
+var HeightBullet = preload("res://Bullets/HeightBullet/height_bullet.tscn")
 
 const SPEED = 100.0
 const SHOT_MILLIS_THRESHOLD = 0.5
@@ -60,7 +61,7 @@ func playIdle():
 	get_node("AnimatedSprite2D").play("Idle")
 
 func shoot(direction):
-	var bullet = bulletScene.instantiate()
+	var bullet = HeightBullet.instantiate()
 	
 	shotElapsedMillis = 0.0
 	

@@ -32,8 +32,10 @@ func playJump(flipped):
 
 func _on_bullet_detection_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	if area.is_in_group("bullets"):
-		area.queue_free()
-		queue_free()
+		print("bullets is " + str(area.monitorable))
+		if area.monitorable:
+			area.queue_free()
+			queue_free()
 	if area.is_in_group("players"):
 		playerInArea = true
 		
