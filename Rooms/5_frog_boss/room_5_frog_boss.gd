@@ -1,6 +1,7 @@
 extends Node2D
 
 var Boss = preload("res://Mobs/Frog/Boss/frog_boss.tscn")
+var boss
 var state
 var startPlayerPosition
 
@@ -28,7 +29,7 @@ func handleMobSpawn():
 		"down": bossPosition = Vector2(150,150)
 		"center": bossPosition = Vector2(50,100)
 		
-	var boss = Boss.instantiate()
+	boss = Boss.instantiate()
 	boss.position = bossPosition
 	get_node("Mobs").add_child(boss)
 
@@ -38,3 +39,10 @@ func _process(delta):
 	if state.monstersCount == 0:
 		for child in get_node("Doors").get_children():
 			child.open = true
+	
+	var progressBar = get_node("ProgressBar")
+	if boss != null && boss.life > 0:
+		progressBar.value = boss.life
+	else:
+		if progressBar != null:
+			progressBar.queue_free()
