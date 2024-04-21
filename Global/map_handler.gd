@@ -6,6 +6,9 @@ const mapColumns = 5
 var room4Frogs = preload("res://Rooms/4_frogs/room_4_frogs.tscn")
 var room2Frogs = preload("res://Rooms/2_frogs/room_2_frogs.tscn")
 var room1Cherry = preload("res://Rooms/1_cherry/room_1_cherry.tscn")
+var RoomFrogBoss = preload("res://Rooms/5_frog_boss/room_5_frog_boss.tscn")
+
+var doorClass = preload("res://Doors/basic_door.tscn")
 
 var RoomState = preload("res://Rooms/room_state.gd")
 
@@ -133,8 +136,6 @@ func changeRoom(side):
 	var isYInRange = candidateCoords[1] < mapColumns && candidateCoords[1] >= 0
 	
 	if isYInRange && isXInRange :
-		#var candidateMapPos = map[candidateCoords[0]][candidateCoords[1]]
-		#print("candidateMapPos: " + str(candidateMapPos))
 		addRoomToTree(candidateCoords, side)
 		
 
@@ -153,10 +154,12 @@ func addRoomToTree(coords, fromSide):
 	var room
 	var roomState = roomStates.get(key)
 	
-	match roomState.roomType:
-		1: room = room4Frogs.instantiate()
-		2: room = room2Frogs.instantiate()
-		3: room = room1Cherry.instantiate()
+	# todo: uncomment for 
+	#match roomState.roomType:
+		#1: room = room4Frogs.instantiate()
+		#2: room = room2Frogs.instantiate()
+		#3: room = room1Cherry.instantiate()
+	room = RoomFrogBoss.instantiate()
 		
 	room.init(roomState, fromSide)
 	roomNode.add_child(room)
@@ -168,3 +171,41 @@ func subtract(a: Array, b: Array):
 		result.append([0])
 		result[i] = a[i] - b[i]
 	return result
+	
+func setupDoors(doorsNode):
+	var upDoor = doorClass.instantiate()
+	var downDoor = doorClass.instantiate()
+	var leftDoor = doorClass.instantiate()
+	var righDoor = doorClass.instantiate()
+	
+	upDoor.side = "up"
+	downDoor.side = "down"
+	leftDoor.side = "left"
+	righDoor.side = "right"
+	
+	var upCellType = MapHandler.getCellValue(-1,0)
+	var downCellType = MapHandler.getCellValue(1,0)
+	var leftCellType = MapHandler.getCellValue(0,-1)
+	var rightCellType = MapHandler.getCellValue(0,1)
+	
+	if upCellType != -1:
+		doorsNode.add_child(upDoor)
+	if downCellType != -1:
+		doorsNode.add_child(downDoor)
+	if leftCellType != -1:
+		doorsNode.add_child(leftDoor)
+	if rightCellType != -1:
+		doorsNode.add_child(righDoor)
+	
+	for child in doorsNode.get_children():
+		match child.side:
+			"up":
+				child.position = Vector2(144,10)
+			"down":
+				child.position = Vector2(144,182)
+			"left":
+				child.position = Vector2(9,96)
+				child.rotation = deg_to_rad(90)
+			"right":
+				child.position = Vector2(278,96)
+				child.rotation = deg_to_rad(90)
