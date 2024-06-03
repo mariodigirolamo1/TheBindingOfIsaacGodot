@@ -8,6 +8,8 @@ var room2Frogs = preload("res://Rooms/2_frogs/room_2_frogs.tscn")
 var room1Cherry = preload("res://Rooms/1_cherry/room_1_cherry.tscn")
 var RoomFrogBoss = preload("res://Rooms/5_frog_boss/room_5_frog_boss.tscn")
 
+var generateRandomRoomsUseCase = preload("res://Global/RoomGeneration/Domain/generate_random_rooms_use_case.gd").new()
+
 var doorClass = preload("res://Doors/basic_door.tscn")
 
 var RoomState = preload("res://Rooms/room_state.gd")
@@ -47,7 +49,7 @@ func shuffle():
 		[-1,-1,-1,-1,-1]
 	]
 	setRoomTemplate()
-	generateRandomRooms()
+	roomStates = generateRandomRoomsUseCase.invoke(map)
 	
 func setRoomTemplate():
 	currentRoomCoords = [2,2]
@@ -95,15 +97,6 @@ func rotate90DegressRigth(map):
 	
 func buildFirstRoom():
 	addRoomToTree(currentRoomCoords, "center")
-
-func generateRandomRooms():
-	for i in mapRows:
-		for j in mapColumns:
-			if map[i][j] == 1:
-				var roomStateKey = str(i) + "," + str(j)
-				var roomState = RoomState.new()
-				roomState.init(rng.randi_range(1,3))
-				roomStates[roomStateKey] = roomState
 
 func getCellValue(dx,dy):
 	var x = currentRoomCoords[0]+dx
@@ -154,12 +147,11 @@ func addRoomToTree(coords, fromSide):
 	var room
 	var roomState = roomStates.get(key)
 	
-	# todo: uncomment for 
-	#match roomState.roomType:
-		#1: room = room4Frogs.instantiate()
-		#2: room = room2Frogs.instantiate()
-		#3: room = room1Cherry.instantiate()
-	room = RoomFrogBoss.instantiate()
+	match roomState.roomType:
+		1: room = room4Frogs.instantiate()
+		2: room = room2Frogs.instantiate()
+		3: room = room1Cherry.instantiate()
+		4: room = RoomFrogBoss.instantiate()
 		
 	room.init(roomState, fromSide)
 	roomNode.add_child(room)

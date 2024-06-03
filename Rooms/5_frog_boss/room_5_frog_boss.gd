@@ -18,20 +18,19 @@ func _ready():
 	MapHandler.setupDoors(get_node("Doors"))
 	
 func handleMobSpawn():
-	#todo: uncomment to handle saved state
-	#if state.monstersCount > 0:
-	var bossPosition
+	if state.monstersCount > 0:
+		var bossPosition
 	
-	match startPlayerPosition:
-		"left": bossPosition = Vector2(50,100)
-		"right": bossPosition = Vector2(250,100)
-		"up": bossPosition = Vector2(150,30)
-		"down": bossPosition = Vector2(150,150)
-		"center": bossPosition = Vector2(50,100)
-		
-	boss = Boss.instantiate()
-	boss.position = bossPosition
-	get_node("Mobs").add_child(boss)
+		match startPlayerPosition:
+			"left": bossPosition = Vector2(50,100)
+			"right": bossPosition = Vector2(250,100)
+			"up": bossPosition = Vector2(150,30)
+			"down": bossPosition = Vector2(150,150)
+			"center": bossPosition = Vector2(50,100)
+			
+		boss = Boss.instantiate()
+		boss.position = bossPosition
+		get_node("Mobs").add_child(boss)
 
 func _process(delta):
 	state.monstersCount = get_node("Mobs").get_child_count()
