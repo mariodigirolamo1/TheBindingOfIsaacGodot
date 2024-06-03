@@ -26,7 +26,10 @@ func basicPaint(matrix):
 	for curRow in MapHandler.mapRows:
 		for curCol in MapHandler.mapColumns:
 			var guiCell = matrix.get_child(curRow).get_child(0).get_child(curCol)
-			if(MapHandler.map[curRow][curCol] != -1):
+			var mapCell = MapHandler.map[curRow][curCol]
+			if(mapCell == 4):
+				guiCell.modulate = Color(0,0,255,1)
+			elif(mapCell != -1):
 				guiCell.modulate = Color(255,255,255,1)
 			else:
 				guiCell.modulate = Color(105,105,105,0.25)

@@ -1,5 +1,7 @@
 extends Node
 
+class_name RoomState
+
 var monstersCount = -1
 var items = []
 var roomType = 1
@@ -17,3 +19,5 @@ func init(roomType):
 			3: 
 				monstersCount = 0
 				items.append("middleCherry")
+			4:
+				monstersCount = 1
